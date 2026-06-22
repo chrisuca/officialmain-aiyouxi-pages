@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华体会 · 知识库入口</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            background: #f2f5f9;
+            color: #1e293b;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #1a2f44 100%);
+            color: #e6edf5;
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 0.4rem;
+            word-break: keep-all;
+        }
+        .hero .sub {
+            font-size: 1rem;
+            color: #9bb7d4;
+            border-bottom: 1px solid #2f4a65;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            margin-top: 0.15rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 3.5rem;
+            flex: 1;
+        }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #0f2b42;
+            margin: 2.2rem 0 0.8rem;
+            border-left: 5px solid #1d6f9c;
+            padding-left: 1rem;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.6rem 1.4rem;
+            box-shadow: 0 4px 12px rgba(0, 20, 40, 0.05);
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            border: 1px solid #e9edf3;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0,20,50,0.08);
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1d4a6e;
+            margin-bottom: 0.4rem;
+        }
+        .card p {
+            color: #3b4f64;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+        .card .tag {
+            display: inline-block;
+            background: #e5eef9;
+            color: #1a4a6b;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.75rem;
+            border-radius: 30px;
+            margin-top: 0.5rem;
+        }
+        .intro-text {
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            padding: 1.8rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+            margin: 1rem 0 1.8rem;
+            border: 1px solid #dfe7f0;
+        }
+        .intro-text p {
+            margin-bottom: 1rem;
+        }
+        .intro-text a {
+            color: #1a6b9c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b0cfec;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .intro-text a:hover {
+            color: #0e4b72;
+            border-bottom-color: #0e4b72;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+            margin-top: 0.6rem;
+        }
+        .info-block {
+            background: #f8faff;
+            padding: 1.4rem 1.6rem;
+            border-radius: 20px;
+            border: 1px solid #e2ecf7;
+        }
+        .info-block h4 {
+            font-weight: 500;
+            color: #143650;
+            margin-bottom: 0.3rem;
+            font-size: 1.05rem;
+        }
+        .info-block p {
+            font-size: 0.95rem;
+            color: #2c4056;
+        }
+        .notice-box {
+            background: #e7f0fa;
+            border-left: 6px solid #1f6d9c;
+            padding: 1.4rem 1.8rem;
+            border-radius: 14px;
+            margin: 2rem 0 0.5rem;
+        }
+        .notice-box strong {
+            color: #10354e;
+        }
+        .faq-mini {
+            margin: 2.2rem 0 0.5rem;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.6rem 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .faq-mini details {
+            margin-bottom: 0.5rem;
+            border-bottom: 1px dashed #d1deed;
+            padding: 0.6rem 0;
+        }
+        .faq-mini summary {
+            font-weight: 500;
+            color: #1e4b6e;
+            cursor: pointer;
+            font-size: 1rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        .faq-mini summary::before {
+            content: "▹";
+            color: #1a6f9c;
+            margin-right: 0.6rem;
+        }
+        .faq-mini details p {
+            margin: 0.6rem 0 0.2rem 1.6rem;
+            color: #2b4058;
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            color: #62768b;
+            font-size: 0.85rem;
+            border-top: 1px solid #dce5f0;
+            padding-top: 2rem;
+        }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero { padding: 2rem 1rem; }
+            .container { padding: 1.5rem 1rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .card-grid { grid-template-columns: 1fr; }
+            .intro-text { padding: 1.2rem; }
+            .faq-mini { padding: 1rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>华体会 · 知识库</h1>
+        <div class="sub">稳定入口 · 信息说明 · 聚合参考</div>
+    </header>
+
+    <main class="container">
+        <!-- 介绍区：自然嵌入链接 -->
+        <div class="intro-text">
+            <p><a href="https://beta-huatihui.com">华体会</a> 是一处整合了多种信息模块与实用资源的平台。其内容架构偏向知识化组织，便于访问者按需索引与查阅。本页作为辅助说明页，旨在梳理其信息单元、功能特点及常见疑问，帮助使用者快速建立起对平台的整体认知。</p>
+            <p>以下内容基于平台公开信息整理，涵盖了主要板块、典型使用场景以及一些提示性说明，可作为了解 <a href="https://beta-huatihui.com">华体会</a> 的简明参考。</p>
+        </div>
+
+        <!-- 目录感布局：卡片式信息块 -->
+        <h2 class="section-title">主要信息模块</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>📋 文档索引</h3>
+                <p>分类整理的知识条目，涵盖操作指南、协议说明与更新日志。</p>
+                <span class="tag">结构化</span>
+            </div>
+            <div class="card">
+                <h3>🔍 检索工具</h3>
+                <p>提供站内关键词搜索，支持按时间、类别筛选结果。</p>
+                <span class="tag">效率</span>
+            </div>
+            <div class="card">
+                <h3>📌 公告聚合</h3>
+                <p>集中展示近期重要通知、版本动态与维护计划。</p>
+                <span class="tag">动态</span>
+            </div>
+            <div class="card">
+                <h3>🧩 常见解答</h3>
+                <p>汇集典型问题与对应说明，覆盖使用流程与配置细节。</p>
+                <span class="tag">FAQ</span>
+            </div>
+        </div>
+
+        <!-- 说明区 + 提示区 融合 -->
+        <h2 class="section-title">平台特点与说明</h2>
+        <div class="info-grid">
+            <div class="info-block">
+                <h4>📖 内容组织方式</h4>
+                <p>采用分类目录与标签系统，每个板块均提供简要描述，降低检索成本。模块之间保持独立，又通过交叉链接形成知识网络。</p>
+            </div>
+            <div class="info-block">
+                <h4>⚙️ 访问与兼容</h4>
+                <p>页面适配主流浏览器及移动设备，无需额外插件即可浏览大部分内容。部分功能建议使用最新版浏览器获得完整体验。</p>
+            </div>
+        </div>
+
+        <div class="notice-box">
+            <strong>📎 提示：</strong> 使用 <a href="https://beta-huatihui.com">华体会</a> 时，建议先浏览文档索引或常见解答板块，以快速熟悉信息分布。若查找特定条目，可利用检索工具缩小范围。平台内容会定期更新，可关注公告聚合了解最新调整。
+        </div>
+
+        <!-- 相关信息区：FAQ 摘要 -->
+        <h2 class="section-title">常见疑问摘要</h2>
+        <div class="faq-mini">
+            <details>
+                <summary>如何查找特定主题的资料？</summary>
+                <p>可使用页面内的搜索框输入关键词，或按分类目录逐层浏览。部分板块提供标签筛选功能。</p>
+            </details>
+            <details>
+                <summary>信息更新频率如何？</summary>
+                <p>各板块根据内容性质不同，更新节奏有所区别。公告类信息即时发布，文档索引则随版本迭代修订。</p>
+            </details>
+            <details>
+                <summary>是否需要注册账号才能查阅？</summary>
+                <p>大部分信息板块对访客开放，无需注册即可阅读。部分交互功能可能需要登录。</p>
+            </details>
+            <details>
+                <summary>遇到页面显示异常怎么办？</summary>
+                <p>建议先检查网络与浏览器版本，清除缓存后重试。也可通过平台提供的反馈渠道说明情况。</p>
+            </details>
+        </div>
+
+        <div class="footer-note">
+            本页为独立介绍页，内容基于公开信息整理 · 具体请参考 <a href="https://beta-huatihui.com">华体会</a> 平台
+        </div>
+    </main>
+</body>
+</html>
